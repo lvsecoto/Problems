@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="key_load_demo"
+        android:summary="Remove all problems and add the demo problems"
+        android:title="Load demo" />
+
+    <Preference
+        android:key="key_about"
+        android:summary="v1.0"
+        android:title="About Problems" />
+
+</PreferenceScreen>

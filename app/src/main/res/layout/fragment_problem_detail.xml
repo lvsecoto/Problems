@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/foreground"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        app:navigationIcon="@drawable/ic_navigate_back"
+        tools:targetApi="lollipop"></android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/formInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="PROBLEM:" />
+
+                <EditText
+                    android:id="@+id/description"
+                    style="@style/formEditTextMultiLines"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=""
+                    android:text="音乐控制器跟2813(白滴5m300leds)接在一起不工作。跟2812(黑套150leds)接在一起只亮一些灯" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/formInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="SOLUTION:" />
+
+                <EditText
+                    android:id="@+id/solution"
+                    style="@style/formEditTextMultiLines"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=""
+                    android:text="让客户用开关控制一下" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:stretchColumns="1">
+
+                <TableRow style="@style/formTableRow">
+
+                    <TextView
+                        style="@style/formTableRowLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DATE:" />
+
+                    <EditText
+                        android:id="@+id/date"
+                        style="@style/formEditTextSingleLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint=""
+                        android:inputType="date"
+                        android:text="2017-9-13" />
+
+                    <Button
+                        android:id="@+id/chooseDate"
+                        style="@style/formChoose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CHOOSE" />
+
+                </TableRow>
+
+                <TableRow style="@style/formTableRow">
+
+                    <TextView
+                        style="@style/formTableRowLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="PRODUCT:" />
+
+                    <EditText
+                        android:id="@+id/product"
+                        style="@style/formEditTextSingleLine"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint=""
+                        android:text="音乐控制器套装" />
+
+                    <Button
+                        android:id="@+id/chooseProduct"
+                        style="@style/formChoose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CHOOSE" />
+                </TableRow>
+
+                <TableRow style="@style/formTableRow">
+
+                    <TextView
+                        style="@style/formTableRowLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ORDER ID:" />
+
+                    <EditText
+                        android:id="@+id/orderId"
+                        style="@style/formEditTextSingleLine"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint=""
+                        android:text="8154593963" />
+
+                    <Button
+                        android:id="@+id/chooseOrderId"
+                        style="@style/formChoose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CHOOSE" />
+                </TableRow>
+
+            </TableLayout>
+
+            <LinearLayout
+                style="@style/formInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/formLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="DONE:" />
+
+                <com.yjy.problems.view.checkBox.CheckBox
+                    android:id="@+id/done"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="0"
+                    app:checkedColor="@color/colorAccent" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
