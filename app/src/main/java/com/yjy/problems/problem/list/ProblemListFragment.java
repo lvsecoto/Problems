@@ -319,6 +319,11 @@ public class ProblemListFragment extends Fragment implements ProblemListContract
         return mFilterView.mToDate.getText().toString();
     }
 
+    @Override
+    public void setHighlightText(String text) {
+        mProblemListAdapter.setHighlightText(text);
+    }
+
     private void showDeleteProblemDialog(final int position) {
         new AlertDialog.Builder(getContext())
                 .setMessage("Remove this problem?")

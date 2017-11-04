@@ -1,6 +1,10 @@
 package com.yjy.problems.problem.list.adapter;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,8 @@ import com.yjy.problems.view.checkBox.CheckBox;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class ProblemItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -42,6 +48,8 @@ class ProblemItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     private StringBuilder mDetailBuilder = new StringBuilder();
 
+    private String mHighLightText = null;
+
     private ProblemItemViewHolder(View view) {
         super(view);
     }
@@ -69,8 +77,8 @@ class ProblemItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     }
 
     void showProblem(Problem mProblem) {
-        mDescriptionTextView.setText(mProblem.getDescription());
-        mResolveTextView.setText(mProblem.getSolution());
+        mDescriptionTextView.setText(highlight(mProblem.getDescription()));
+        mResolveTextView.setText(highlight(mProblem.getSolution()));
         mDateTextView.setText(
                 mSimpleDateFormat.format(
                         mProblem.getDate()
@@ -82,6 +90,28 @@ class ProblemItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         mDoneCheckBox.setChecked(
                 mProblem.isDone()
         );
+    }
+
+    private CharSequence highlight(String text) {
+        if (mHighLightText == null) {
+            return text;
+        }
+        SpannableString spannableString = new SpannableString(text);
+        Matcher matcher = Pattern.compile(mHighLightText).matcher(text);
+        matcher.reset();
+        while (matcher.find()) {
+            spannableString.setSpan(
+                    new ForegroundColorSpan(Color.RED),
+                    matcher.start(),
+                    matcher.end(),
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            );
+        }
+        return spannableString;
+    }
+
+    void setHighLightText(String highLightText) {
+        mHighLightText = highLightText;
     }
 
     private void showDetail(String productName, String orderId) {
@@ -100,7 +130,7 @@ class ProblemItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
             }
         }
 
-        mDetailTextView.setText(mDetailBuilder.toString());
+        mDetailTextView.setText(highlight(mDetailBuilder.toString()));
     }
 
     @Override

@@ -46,6 +46,7 @@ interface ProblemListContract {
 
         String getFilterToDate();
 
+        void setHighlightText(String text);
     }
 
     interface Presenter {

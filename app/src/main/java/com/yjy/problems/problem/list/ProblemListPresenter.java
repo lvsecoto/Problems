@@ -78,10 +78,15 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
 
     @Override
     public void searchText(String text) {
-        mFilter.setTextFilter(text);
+        setupSearcher(text);
 
         reloadProblems();
         mView.showProblems(mProblems);
+    }
+
+    private void setupSearcher(String text) {
+        mFilter.setTextFilter(text);
+        mView.setHighlightText(text);
     }
 
     @Override

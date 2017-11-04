@@ -16,6 +16,8 @@ public class ProblemListAdapter extends RecyclerView.Adapter {
 
     private OnItemClickListener mOnItemClickListener;
 
+    private String mHighLightText;
+
     public ProblemListAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
     }
@@ -27,12 +29,17 @@ public class ProblemListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ((ProblemItemViewHolder)holder).setHighLightText(mHighLightText);
         ((ProblemItemViewHolder) holder).showProblem(mData.get(position));
     }
 
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public void setHighlightText(String text) {
+        mHighLightText = text;
     }
 
     public void setData(List<Problem> data) {
@@ -42,5 +49,4 @@ public class ProblemListAdapter extends RecyclerView.Adapter {
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
     }
-
 }
