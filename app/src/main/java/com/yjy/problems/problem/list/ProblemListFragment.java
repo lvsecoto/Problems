@@ -241,7 +241,7 @@ public class ProblemListFragment extends Fragment implements ProblemListContract
 
     @Override
     public void showProblems(List<Problem> problems) {
-        mProblemListAdapter.setData(problems);
+        mProblemListAdapter.setProblemList(problems);
         mProblemListAdapter.notifyDataSetChanged();
     }
 
@@ -252,7 +252,7 @@ public class ProblemListFragment extends Fragment implements ProblemListContract
 
     @Override
     public void showProblemsDelete(List<Problem> problems, int atPosition) {
-        mProblemListAdapter.setData(problems);
+        mProblemListAdapter.setProblemList(problems);
         mProblemListAdapter.notifyItemRemoved(atPosition);
     }
 

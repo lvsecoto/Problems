@@ -8,11 +8,11 @@ import com.yjy.problems.data.Problem;
 
 import java.util.List;
 
-public class ProblemListAdapter extends RecyclerView.Adapter {
+public class ProblemListAdapter extends RecyclerView.Adapter<ProblemItemViewHolder> {
 
     private final LayoutInflater mLayoutInflater;
 
-    private List<Problem> mData;
+    private List<Problem> mProblemList;
 
     private OnItemClickListener mOnItemClickListener;
 
@@ -23,27 +23,27 @@ public class ProblemListAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProblemItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return ProblemItemViewHolder.create(mLayoutInflater, parent, viewType, mOnItemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((ProblemItemViewHolder)holder).setHighLightText(mHighLightText);
-        ((ProblemItemViewHolder) holder).showProblem(mData.get(position));
+    public void onBindViewHolder(ProblemItemViewHolder holder, int position) {
+        holder.setHighLightText(mHighLightText);
+        holder.showProblem(mProblemList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mProblemList.size();
     }
 
     public void setHighlightText(String text) {
         mHighLightText = text;
     }
 
-    public void setData(List<Problem> data) {
-        mData = data;
+    public void setProblemList(List<Problem> problemList) {
+        mProblemList = problemList;
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
