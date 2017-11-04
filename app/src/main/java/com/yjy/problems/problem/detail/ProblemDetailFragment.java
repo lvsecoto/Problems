@@ -213,6 +213,15 @@ public class ProblemDetailFragment extends Fragment implements ProblemDetailCont
         Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void alertEmptyProblemDescriptionNotAllows() {
+        Toast.makeText(
+                getContext(),
+                R.string.alertEmptyProblemDescriptionNotAllow,
+                Toast.LENGTH_LONG
+        ).show();
+    }
+
     @OnClick({R.id.chooseDate, R.id.chooseProduct})
     public void onViewClick(View view) {
         switch (view.getId()) {

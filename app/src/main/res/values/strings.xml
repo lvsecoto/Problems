@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Problems</string>
+
+    <!--navigation drawer-->
+    <string name="navMenuHome">Home</string>
+    <string name="navMenuSettings">Settings</string>
+
+    <!--filter window-->
+    <string name="filterLabel">FILTER</string>
+    <string name="filterDoneLabel">DONE:</string>
+    <string name="filterFromDateLabel">FROM:</string>
+    <string name="filterChooseFromDate">CHOOSE</string>
+    <string name="filterToDateLabel">TO:</string>
+    <string name="filterChooseToDate">CHOOSE</string>
+
+    <!--problem detail fragment-->
+    <string name="problemDescriptionLabel">PROBLEM:</string>
+    <string name="problemSolutionLabel">SOLUTION:</string>
+    <string name="problemDateLabel">DATE:</string>
+    <string name="chooseProblemDate">CHOOSE</string>
+    <string name="productNameLabel">PRODUCT:</string>
+    <string name="chooseProduct">CHOOSE</string>
+    <string name="orderIdLabel">ORDER ID:</string>
+    <string name="chooseOrderId">CHOOSE</string>
+    <string name="problemDoneLabel">DONE:</string>
+    <string name="alertEmptyProblemDescriptionNotAllow">Empty Problem description is not allows</string>
+
+    <!--problem list fragment-->
+    <string name="msgIsRemoveProblem">Remove this problem?</string>
+
+    <!--settings fragment-->
+    <string name="prefAboutDescription">About Problems</string>
+    <string name="prefLoadDemoDescription">Remove all problems and add the demo problems</string>
+
 </resources>

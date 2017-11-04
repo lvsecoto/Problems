@@ -16,7 +16,7 @@
         <TableRow style="@style/filterTableRow">
 
             <TextView
-                android:text="FILTER"
+                android:text="@string/filterLabel"
                 android:textSize="18sp" />
         </TableRow>
 
@@ -25,7 +25,7 @@
             <TextView
                 style="@style/filterTableRowLabel"
                 android:gravity="start"
-                android:text="DONE:" />
+                android:text="@string/filterDoneLabel" />
 
             <com.yjy.problems.view.checkBox.CheckBox
                 android:id="@+id/done"
@@ -43,19 +43,18 @@
             <TextView
                 style="@style/filterTableRowLabel"
                 android:gravity="start"
-                android:text="FROM:" />
+                android:text="@string/filterFromDateLabel" />
 
             <TextView
                 android:id="@+id/fromDate"
                 style="@style/filterTableRowLabel"
                 android:background="@null"
-                android:text="17 - 09- 10"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/chooseFromDate"
                 style="@style/filterTableRowLabel"
-                android:text="CHOOSE"
+                android:text="@string/filterChooseFromDate"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp" />
 
@@ -66,19 +65,18 @@
             <TextView
                 style="@style/filterTableRowLabel"
                 android:gravity="start"
-                android:text="TO:" />
+                android:text="@string/filterToDateLabel" />
 
             <TextView
                 android:id="@+id/toDate"
                 style="@style/filterTableRowLabel"
                 android:background="@null"
-                android:text="17 - 09 - 16"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/chooseToDate"
                 style="@style/filterTableRowLabel"
-                android:text="CHOOSE"
+                android:text="@string/filterChooseToDate"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp" />
 

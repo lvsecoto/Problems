@@ -38,6 +38,8 @@ public interface ProblemDetailContract {
         void showChooseList(List<String> items);
 
         void showToast(String text);
+
+        void alertEmptyProblemDescriptionNotAllows();
     }
 
     interface Presenter {

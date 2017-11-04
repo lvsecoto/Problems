@@ -40,15 +40,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="PROBLEM:" />
+                    android:text="@string/problemDescriptionLabel" />
 
                 <EditText
                     android:id="@+id/description"
                     style="@style/formEditTextMultiLines"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=""
-                    android:text="音乐控制器跟2813(白滴5m300leds)接在一起不工作。跟2812(黑套150leds)接在一起只亮一些灯" />
+                    android:hint="" />
 
             </LinearLayout>
 
@@ -63,15 +62,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="SOLUTION:" />
+                    android:text="@string/problemSolutionLabel" />
 
                 <EditText
                     android:id="@+id/solution"
                     style="@style/formEditTextMultiLines"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=""
-                    android:text="让客户用开关控制一下" />
+                    android:hint="" />
+
             </LinearLayout>
 
             <TableLayout
@@ -86,7 +85,7 @@
                         style="@style/formTableRowLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DATE:" />
+                        android:text="@string/problemDateLabel" />
 
                     <EditText
                         android:id="@+id/date"
@@ -94,15 +93,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint=""
-                        android:inputType="date"
-                        android:text="2017-9-13" />
+                        android:inputType="date" />
 
                     <Button
                         android:id="@+id/chooseDate"
                         style="@style/formChoose"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CHOOSE" />
+                        android:text="@string/chooseProblemDate" />
 
                 </TableRow>
 
@@ -113,22 +111,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text="PRODUCT:" />
+                        android:text="@string/productNameLabel" />
 
                     <EditText
                         android:id="@+id/product"
                         style="@style/formEditTextSingleLine"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint=""
-                        android:text="音乐控制器套装" />
+                        android:hint="" />
 
                     <Button
                         android:id="@+id/chooseProduct"
                         style="@style/formChoose"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CHOOSE" />
+                        android:text="@string/chooseProduct" />
+
                 </TableRow>
 
                 <TableRow style="@style/formTableRow">
@@ -137,22 +135,22 @@
                         style="@style/formTableRowLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ORDER ID:" />
+                        android:text="@string/orderIdLabel" />
 
                     <EditText
                         android:id="@+id/orderId"
                         style="@style/formEditTextSingleLine"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint=""
-                        android:text="8154593963" />
+                        android:hint="" />
 
                     <Button
                         android:id="@+id/chooseOrderId"
                         style="@style/formChoose"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CHOOSE" />
+                        android:text="@string/chooseOrderId" />
+
                 </TableRow>
 
             </TableLayout>
@@ -169,7 +167,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="DONE:" />
+                    android:text="@string/problemDoneLabel" />
 
                 <com.yjy.problems.view.checkBox.CheckBox
                     android:id="@+id/done"

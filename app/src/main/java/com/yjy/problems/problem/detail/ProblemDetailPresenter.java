@@ -86,7 +86,7 @@ class ProblemDetailPresenter implements ProblemDetailContract.Presenter {
     @Override
     public void stop() {
         if (Pattern.compile("\\s+|").matcher(mView.getDescription()).matches()) {
-            mView.showToast("Empty Problem description is not allows");
+            mView.alertEmptyProblemDescriptionNotAllows();
             return;
         }
 

@@ -1,5 +1,6 @@
 package com.yjy.problems.problem.list;
 
+import android.util.Log;
 import com.yjy.problems.data.Problem;
 import com.yjy.problems.data.source.IProblemDataSource;
 import com.yjy.problems.data.source.ProblemDataSource;
@@ -14,6 +15,8 @@ import java.util.*;
  */
 
 class ProblemListPresenter implements ProblemListContract.Presenter {
+
+    private static final String TAG = "ProblemListPresenter";
 
     private static final int REQUEST_CHOOSE_FROM_DATE = 1;
 
@@ -168,9 +171,11 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
                     mDateFormat.parse(mView.getFilterToDate())
             );
         } catch (ParseException e) {
-            // TODO: 2017/10/10 use resource string
-            mView.showToast("problem date: from " + mView.getFilterFromDate() +
-                    " to " + mView.getFilterToDate());
+            Log.e(TAG,
+                    "setupDateFilter: fail to parse data from: " +
+                    mView.getFilterFromDate() + " ," +
+                    " to : " +
+                    mView.getFilterToDate(), e);
         }
     }
 

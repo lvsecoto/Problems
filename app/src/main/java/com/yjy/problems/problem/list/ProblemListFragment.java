@@ -33,8 +33,6 @@ import java.util.UUID;
 
 public class ProblemListFragment extends Fragment implements ProblemListContract.View {
 
-    private static final String TAG = "ProblemDetailFragment";
-
     ToolbarView mToolbarView = new ToolbarView();
 
     @BindView(R.id.problemList)
@@ -61,7 +59,6 @@ public class ProblemListFragment extends Fragment implements ProblemListContract
             mOnFilterWindowDismissListener = new PopupWindow.OnDismissListener() {
         @Override
         public void onDismiss() {
-            Log.d(TAG, "onDismiss :  Filter Window Dismiss");
             mPresenter.setupFilter();
         }
     };
@@ -326,7 +323,7 @@ public class ProblemListFragment extends Fragment implements ProblemListContract
 
     private void showDeleteProblemDialog(final int position) {
         new AlertDialog.Builder(getContext())
-                .setMessage("Remove this problem?")
+                .setMessage(R.string.msgIsRemoveProblem)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

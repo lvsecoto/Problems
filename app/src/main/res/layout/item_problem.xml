@@ -38,7 +38,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="CNBIKSUMYERP55791, E27泳池灯"
                 android:textColor="@android:color/tertiary_text_light"
                 android:textSize="12sp" />
 
@@ -48,7 +47,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:lineSpacingMultiplier="1.2"
-                android:text="一开始只闪红光，接着中间部分闪光，没法关掉，只能拔掉电源"
                 android:textColor="@android:color/secondary_text_light"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -59,7 +57,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:minLines="0"
-                android:text="让客户用开关控制一下"
                 android:textColor="@android:color/tertiary_text_light"
                 android:textSize="16sp" />
 
@@ -72,7 +69,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:text="9-11"
                     android:textColor="@android:color/tertiary_text_light" />
 
                 <com.yjy.problems.view.checkBox.CheckBox

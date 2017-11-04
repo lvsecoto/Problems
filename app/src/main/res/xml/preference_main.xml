@@ -3,12 +3,12 @@
 
     <Preference
         android:key="key_load_demo"
-        android:summary="Remove all problems and add the demo problems"
+        android:summary="@string/prefLoadDemoDescription"
         android:title="Load demo" />
 
     <Preference
         android:key="key_about"
         android:summary="v1.0"
-        android:title="About Problems" />
+        android:title="@string/prefAboutDescription" />
 
 </PreferenceScreen>
