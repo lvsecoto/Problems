@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Problems</string>
+    <string name="navMenuHome" translatable="false">主界面</string>
+    <string name="navMenuSettings">设置</string>
+    <string name="filterLabel">过滤</string>
+    <string name="filterDoneLabel">完成</string>
+    <string name="filterFromDateLabel">从</string>
+    <string name="filterChooseFromDate">选择</string>
+    <string name="filterToDateLabel">到</string>
+    <string name="filterChooseToDate">选择</string>
+    <string name="problemDescriptionLabel">问题</string>
+    <string name="problemSolutionLabel">方法</string>
+    <string name="problemDateLabel">日期</string>
+    <string name="chooseProblemDate">选择</string>
+    <string name="productNameLabel">产品</string>
+    <string name="chooseProduct">选择</string>
+    <string name="orderIdLabel">订单号</string>
+    <string name="chooseOrderId">选择</string>
+    <string name="problemDoneLabel">完成</string>
+    <string name="alertEmptyProblemDescriptionNotAllow">不允许问题描述为空</string>
+    <string name="msgIsRemoveProblem">删除此问题？</string>
+    <string name="prefAboutDescription">关于Problem</string>
+    <string name="prefLoadDemoDescription">删除所有问题并加入示例问题</string>
+</resources>
