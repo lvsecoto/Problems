@@ -10,6 +10,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'FTP_CLOUD_API_KEY', FTP_CLOUD_API_KEY
     }
     buildTypes {
         release {
@@ -32,4 +34,19 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.github.machinarius:preferencefragment:0.1.2'
+}
+
+dependencies {
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.6'
+}
+
+dependencies {
+    compile 'com.github.lvsecoto:LTPCloudSDK-RxJava-Retrofit:1.0.0'
+}
+
+dependencies {
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 }

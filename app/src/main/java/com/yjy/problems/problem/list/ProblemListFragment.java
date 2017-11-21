@@ -188,6 +188,12 @@ public class ProblemListFragment extends Fragment implements ProblemListContract
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        mPresenter.stop();
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_problem_list, menu);

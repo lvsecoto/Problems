@@ -2,6 +2,8 @@
 
     package="com.yjy.problems">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".ProblemsApplication"
         android:allowBackup="true"

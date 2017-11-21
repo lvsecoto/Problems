@@ -55,6 +55,8 @@ interface ProblemListContract {
 
         void start();
 
+        void stop();
+
         void showProblemDetail(int position);
 
         void addProblem();

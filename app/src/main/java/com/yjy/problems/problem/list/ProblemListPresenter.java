@@ -1,9 +1,15 @@
 package com.yjy.problems.problem.list;
 
 import android.util.Log;
+import com.yjy.nlp.WordSegmentation;
+import com.yjy.problems.BuildConfig;
 import com.yjy.problems.data.Problem;
 import com.yjy.problems.data.source.IProblemDataSource;
 import com.yjy.problems.data.source.ProblemDataSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -34,6 +40,8 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
 
     private DateFormat mDateFormat = new SimpleDateFormat("yyyy - MM - dd", Locale.getDefault());
 
+    private CompositeDisposable mDisposables = new CompositeDisposable();
+
     @Override
     public void setView(ProblemListContract.View view) {
         mView = view;
@@ -47,6 +55,11 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
 
         mView.showFromDate(getNowDateString());
         mView.showToDate(getNowDateString());
+    }
+
+    @Override
+    public void stop() {
+        mDisposables.clear();
     }
 
     @Override
@@ -80,16 +93,59 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
     }
 
     @Override
-    public void searchText(String text) {
-        setupSearcher(text);
+    public void searchText(final String text) {
+        if (text.equals("")) {
+            mView.setHighlightText("");
 
-        reloadProblems();
-        mView.showProblems(mProblems);
-    }
+            mFilter.setTextFilter(null);
 
-    private void setupSearcher(String text) {
-        mFilter.setTextFilter(text);
-        mView.setHighlightText(text);
+            reloadProblems();
+            mView.showProblems(mProblems);
+            return;
+        }
+
+        mDisposables.add(new WordSegmentation(BuildConfig.FTP_CLOUD_API_KEY).segment(text)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<String>>() {
+                    @Override
+                    public void accept(List<String> words) throws Exception {
+
+                        setTextFilter(words);
+                        setHighlightText(words);
+
+                        reloadProblems();
+                        mView.showProblems(mProblems);
+                    }
+
+                    private void setHighlightText(List<String> words) {
+                        StringBuilder sb = new StringBuilder();
+                        for (String word : words) {
+                            sb.append(word).append("|");
+                        }
+                        sb.deleteCharAt(sb.length() - 1);
+
+                        mView.setHighlightText(sb.toString());
+                    }
+
+                    private void setTextFilter(List<String> words) {
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("%");
+                        for (String word : words) {
+                            sb.append(word).append("%");
+                        }
+
+                        mFilter.setTextFilter(sb.toString());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mFilter.setTextFilter(text);
+                        mView.setHighlightText(text);
+                        mView.showToast(throwable.getMessage());
+                    }
+                })
+        );
     }
 
     @Override
