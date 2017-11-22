@@ -1,6 +1,5 @@
 package com.yjy.problems.problem.list;
 
-import android.util.Log;
 import com.yjy.nlp.WordSegmentation;
 import com.yjy.problems.BuildConfig;
 import com.yjy.problems.data.Problem;
@@ -11,22 +10,13 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
-/**
- * Created by Administrator on 2017/10/7.
- */
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 class ProblemListPresenter implements ProblemListContract.Presenter {
 
     private static final String TAG = "ProblemListPresenter";
-
-    private static final int REQUEST_CHOOSE_FROM_DATE = 1;
-
-    private static final int REQUEST_CHOOSE_TO_DATE = 2;
 
     private ProblemListContract.View mView;
 
@@ -35,10 +25,6 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
     private List<Problem> mProblems;
 
     private IProblemDataSource.Filter mFilter = new ProblemDataSource.Filter();
-
-    private Calendar mCalendar = Calendar.getInstance();
-
-    private DateFormat mDateFormat = new SimpleDateFormat("yyyy - MM - dd", Locale.getDefault());
 
     private CompositeDisposable mDisposables = new CompositeDisposable();
 
@@ -50,11 +36,7 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
     @Override
     public void start() {
         reloadProblems();
-
         mView.showProblems(mProblems);
-
-        mView.showFromDate(getNowDateString());
-        mView.showToDate(getNowDateString());
     }
 
     @Override
@@ -149,107 +131,38 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
     }
 
     @Override
-    public void chooseFromDate() {
-        long maxDate = parseDateStringToLong(mView.getFilterToDate(), Long.MAX_VALUE);
-
-        mView.setDatePickerMinDate(
-                0
-        );
-        mView.setDatePickerMaxDate(
-                maxDate
-        );
-
-        mView.setDatePickerDate(maxDate);
-        mView.showDatePicker(REQUEST_CHOOSE_FROM_DATE);
-    }
-
-    @Override
-    public void chooseToDate() {
-        long minDate = parseDateStringToLong(mView.getFilterFromDate(), 0);
-
-        mView.setDatePickerMinDate(
-                minDate
-        );
-        mView.setDatePickerMaxDate(
-                Long.MAX_VALUE
-        );
-
-        mView.setDatePickerDate(minDate);
-        mView.showDatePicker(REQUEST_CHOOSE_TO_DATE);
-    }
-
-    @Override
-    public void onChosenDate(int requestCode, int year, int month, int dayOfMonth) {
-        mCalendar.set(year, month, dayOfMonth);
-        Date date = mCalendar.getTime();
-
-        switch (requestCode) {
-            case REQUEST_CHOOSE_FROM_DATE:
-                mView.showFromDate(mDateFormat.format(date));
-
-                break;
-
-            case REQUEST_CHOOSE_TO_DATE:
-                mView.showToDate(mDateFormat.format(date));
-                break;
-        }
-    }
-
-    @Override
-    public void setupFilter() {
-        setupDoneFilter();
-        setupDateFilter();
-
-        reloadProblems();
-        mView.showProblems(mProblems);
-    }
-
-    private void setupDoneFilter() {
-        if (!mView.isEnableDoneFilter()) {
-            mFilter.clearDoneFilter();
-            return;
-        }
-
-        mFilter.setDoneFilter(
-                mView.isFilterDone()
-        );
-    }
-
-    private void setupDateFilter() {
-        if (!mView.isEnableDateFilter()) {
-            mFilter.clearDateFilter();
-            return;
-        }
-
-        try {
-            mFilter.setDateFilter(
-                    mDateFormat.parse(mView.getFilterFromDate()),
-                    mDateFormat.parse(mView.getFilterToDate())
-            );
-        } catch (ParseException e) {
-            Log.e(TAG,
-                    "setupDateFilter: fail to parse data from: " +
-                    mView.getFilterFromDate() + " ," +
-                    " to : " +
-                    mView.getFilterToDate(), e);
-        }
-    }
-
-    @Override
     public void refreshProblems() {
         reloadProblems();
         mView.showProblems(mProblems);
     }
 
-    private long parseDateStringToLong(String date, long defaultDate) {
-        long maxDate;
-        try {
-            maxDate = mDateFormat.parse(date).getTime();
-        } catch (ParseException e) {
-            maxDate = defaultDate;
+    @Override
+    public void openFilterUI() {
+        mView.showFilterUI();
+    }
+
+    @Override
+    public void setDoneFilter(boolean done, boolean enable) {
+        if (enable) {
+            mFilter.setDoneFilter(done);
+        } else {
+            mFilter.clearDoneFilter();
         }
 
-        return maxDate;
+        reloadProblems();
+        mView.showProblems(mProblems);
+    }
+
+    @Override
+    public void setDateFilter(Date from, Date to, boolean enable) {
+        if (enable) {
+            mFilter.setDateFilter(from, to);
+        } else {
+            mFilter.clearDateFilter();
+        }
+
+        reloadProblems();
+        mView.showProblems(mProblems);
     }
 
     private UUID getProblemId(int position) {
@@ -260,7 +173,4 @@ class ProblemListPresenter implements ProblemListContract.Presenter {
         mProblems = mProblemDataSource.getProblems(mFilter);
     }
 
-    private String getNowDateString() {
-        return mDateFormat.format(new Date());
-    }
 }

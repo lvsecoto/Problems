@@ -3,12 +3,9 @@ package com.yjy.problems.problem.list;
 import android.support.annotation.NonNull;
 import com.yjy.problems.data.Problem;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
-/**
- * Created by Administrator on 2017/10/7.
- */
 
 interface ProblemListContract {
 
@@ -24,29 +21,9 @@ interface ProblemListContract {
 
         void showProblemsDelete(List<Problem> problems, int atPosition);
 
-        boolean isEnableDoneFilter();
-
-        Boolean isFilterDone();
-
-        void setDatePickerDate(long date);
-
-        void setDatePickerMinDate(long minDate);
-
-        void setDatePickerMaxDate(long maxDate);
-
-        void showDatePicker(int requestCode);
-
-        void showFromDate(String date);
-
-        void showToDate(String date);
-
-        boolean isEnableDateFilter();
-
-        String getFilterFromDate();
-
-        String getFilterToDate();
-
         void setHighlightText(String text);
+
+        void showFilterUI();
     }
 
     interface Presenter {
@@ -70,15 +47,13 @@ interface ProblemListContract {
 
         void searchText(String text);
 
-        void chooseFromDate();
-
-        void chooseToDate();
-
-        void onChosenDate(int requestCode, int year, int month, int dayOfMonth);
-
-        void setupFilter();
-
         void refreshProblems();
+
+        void openFilterUI();
+
+        void setDoneFilter(boolean done, boolean enable);
+
+        void setDateFilter(Date from, Date to, boolean enable);
     }
 
 }
